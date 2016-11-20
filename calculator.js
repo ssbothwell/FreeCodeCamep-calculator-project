@@ -2,6 +2,7 @@ function createCalculator() {
   var a = 0;
   var b = 0;
   var operatorSet = "none";
+  var hasCalculated = false;
   var operator;
   var operators = {
     add: function(){a += b; display("add", a);},
@@ -27,17 +28,22 @@ function createCalculator() {
   }
 
   function set(value) {
-    if (operatorSet == "none") {
+    if (hasCalculated == true && operatorSet == "none") {
+      a = value;
+      b = 0.0;
+      hasCalculated = false;
+    } else if (operatorSet == "none") {
       value = value.toString();
       a = a.toString();
       a = a.concat(value);
-      a = parseInt(a);
+      a = parseFloat(a);
     } else if (operatorSet != "none") {
       value = value.toString();
       b = b.toString();
       b = b.concat(value);
-      b = parseInt(b);
+      b = parseFloat(b);
     }
+
   }
 
   function print() {
@@ -53,15 +59,17 @@ function createCalculator() {
     selectSubtract: function() {operator = operators.subtract; operatorSet = "Subtract";},
     selectMultiply: function() {operator = operators.multiply; operatorSet = "Multiply";},
     selectDivide: function() {operator = operators.divide; operatorSet = "divide";},
-    calculate: function() {operator(); operatorSet = "none";},
+    calculate: function() {operator(); operatorSet = "none"; b = 0; hasCalculated = true;},
   }
 };
 
 calc = createCalculator();
-calc.set(40); // total = 40
-calc.selectDivide();
-calc.set(2);
+calc.set(10);
+calc.selectAdd();
+calc.set(2.5);
 calc.print();
 calc.calculate();
-calc.set(10);
+calc.selectMultiply();
+calc.set(3.14);
 calc.print();
+calc.calculate();
