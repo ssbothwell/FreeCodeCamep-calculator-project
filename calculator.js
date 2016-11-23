@@ -34,6 +34,7 @@ function createCalculator() {
       a = value;
       b = 0;
       hasCalculated = false;
+      return a;
     } else if (operatorSet == "none") {
       value = value.toString();
       a = a.toString();
@@ -43,11 +44,13 @@ function createCalculator() {
         a = a * Math.pow(10, deci);
         decimalFlag = false;
       }
+      return a;
     } else if (operatorSet != "none") {
       value = value.toString();
       b = b.toString();
       b = b.concat(value);
       b = parseFloat(b);
+      return b;
     }
 
   }
@@ -75,14 +78,13 @@ function createCalculator() {
   }
 };
 
+
+
 // Example:
 calc = createCalculator(); // instantiate calc function
-calc.set(3); // set a = 3
-calc.decimal(); // set decimal place
-calc.set(1); // set a = 3.1 (concat 1 to end of number)
-calc.set(4); // set a = 3.14 (concat 4 to end of number)
-calc.selectMultiply(); // select multiply operator
-calc.set(2); // set B = 2
-calc.print(); // print A,B, and operator (for testing)
-calc.calculate(); // Calculate result and store as A
-calc.calculate(); // Calculate result times b again (just like a real calculator)
+var screen = calc.set(2); // set a = 3
+screen = calc.set(5);
+calc.selectAdd();
+screen = calc.set(10);
+calc.calculate();
+//console.log(screen);

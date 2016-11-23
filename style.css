@@ -1,0 +1,111 @@
+body {
+  background: #f6f6f6;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+
+	/* Better text styling */
+	font-size: 20px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #333333;
+}
+
+#calculator {
+  margin: 100px auto;
+  width: 220px;
+  height: auto;
+  border-style: solid
+  border-width: 1px;
+  background: #a9a9a9;
+  border-radius: 5px;
+}
+.keys, .top {overflow: hidden;}
+
+.top {
+  width: 220px;
+  height: 80px;
+  background: #8a9296;
+  border-radius: 5px 5px 0 0;
+}
+
+.titlebar {
+  width: 220px;
+  height: 22px;
+}
+
+#screen {
+  height: 58px;
+  width: 220px;
+  text-align: right;
+  line-height: 58px;
+  font-size: 48px;
+  color: white;
+  padding: 2%;
+}
+
+.keys span {
+	float: left;
+	position: relative;
+	top: 0;
+	cursor: pointer;
+	width: 55px;
+	height: 48px;
+	background: #e0e0e0;
+	margin: 0;
+	outline: 1px solid #999;
+	line-height: 48px;
+	text-align: center;
+
+	/* prevent selection of text inside keys */
+	user-select: none;
+
+	/* Smoothing out hover and active states using css3 transitions */
+	transition: all 0.2s ease;
+}
+
+.keys span:active {
+  opacity: 0.25;
+}
+
+#zero {
+  width: 110px;
+}
+
+span.operator {
+  background: #f5923e;
+  color: #ffffff;
+}
+
+span.bottomLeft {
+  border-bottom-left-radius: 5px;
+}
+
+span.bottomRight {
+  border-bottom-right-radius: 5px;
+}
+
+
+.circle {
+  margin: 5px;
+	width: 12px;
+	height: 12px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+  float: left;
+}
+
+.red {
+  background: #f5655d;
+}
+
+.orange {
+  background: #fdbc40;
+}
+
+.green {
+  background: #34c84a;
+}
