@@ -18,9 +18,14 @@ function createCalculator() {
     b = 0;
     operatorSet = "none";
     hasCalculated = false;
+    decimalFlag = false;
   }
 
   function set(value) {
+    if (decimalFlag == true) {
+      value = '0.' + value.toString();
+      decimalFlag = false;
+    }
     if (hasCalculated == true) {
       if (operatorSet == "none") {
         clear();
@@ -59,13 +64,20 @@ function createCalculator() {
   }
 
   function print() {
-    console.log("a: " + a +"\nb: "+ b + "\noperator: " + operatorSet);
+    console.log([a, b, operatorSet, hasCalculated]);
     return [a, b, operatorSet, hasCalculated];
   }
 
   function decimal() {
-    deci = -(a.toString().length);
     decimalFlag = true;
+    // if (hasCalculated == false && operatorSet == "none") {
+    //   //a = a.toString() + '.';
+    // } else {
+    //   b = b.toString() + '.';
+    // }
+
+    // deci = -(a.toString().length);
+    // decimalFlag = true;
   }
 
 
@@ -85,9 +97,8 @@ function createCalculator() {
 
 
 // Example:
-// calc = createCalculator();
-// calc.set(10);
-// calc.selectAdd();
-// calc.set(5);
-// var test = calc.calculate();
-// console.log(calc.print());
+calc = createCalculator();
+calc.set(314);
+calc.decimal();
+calc.set(1);
+calc.print();

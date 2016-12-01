@@ -7,7 +7,8 @@ window.onload = function() {
   var subtract = document.querySelector('.subtract');
   var calculate = document.querySelector('.calculate');
   var clear = document.querySelector('.clear');
-  var screen = document.querySelector('#screen')
+  var decimalPlace = document.querySelector('#decimal');
+  var screen = document.querySelector('#screen');
 
   // Dev window
   var devA = document.querySelector('#a');
@@ -28,7 +29,7 @@ window.onload = function() {
   }
 
   for (var i = 0; i < nums.length; i++) {
-    nums[i].onclick = function(e) {
+    nums[i].onclick = function() {
       var btnVal = this.innerHTML;
       screen.innerHTML = calc.set(parseFloat(btnVal));
       devUpdate();
@@ -39,34 +40,39 @@ window.onload = function() {
     }
   }
 
-  multiply.onclick = function(e) {
+  multiply.onclick = function() {
     calc.selectMultiply();
     devUpdate();
   }
 
-  divide.onclick = function(e) {
+  divide.onclick = function() {
     calc.selectDivide();
     devUpdate();
   }
 
-  add.onclick = function(e) {
+  add.onclick = function() {
     calc.selectAdd();
     devUpdate();
   }
 
-  subtract.onclick = function(e) {
+  subtract.onclick = function() {
     calc.selectSubtract ();
     devUpdate();
   }
 
-  calculate.onclick = function(e) {
+  calculate.onclick = function() {
     screen.innerHTML = calc.calculate();
     devUpdate();
   }
 
-  clear.onclick = function(e) {
+  clear.onclick = function() {
     calc.clear();
     screen.innerHTML = '0';
+    devUpdate();
+  }
+
+  decimalPlace.onclick = function() {
+    calc.decimal();
     devUpdate();
   }
 
