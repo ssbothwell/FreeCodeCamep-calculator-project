@@ -22,10 +22,6 @@ function createCalculator() {
   }
 
   function set(value) {
-    if (decimalFlag == true) {
-      value = '0.' + value.toString();
-      decimalFlag = false;
-    }
     if (hasCalculated == true) {
       if (operatorSet == "none") {
         clear();
@@ -52,6 +48,10 @@ function createCalculator() {
       b = b.toString();
       b = b.concat(value);
       b = parseFloat(b);
+      if (decimalFlag == true) {
+        b = b * Math.pow(10, deci);
+        decimalFlag = false;
+      }
       return b;
     }
   }
@@ -65,19 +65,16 @@ function createCalculator() {
 
   function print() {
     console.log([a, b, operatorSet, hasCalculated]);
-    return [a, b, operatorSet, hasCalculated];
+    return [a, b, operatorSet, hasCalculated, decimalFlag];
   }
 
   function decimal() {
     decimalFlag = true;
-    // if (hasCalculated == false && operatorSet == "none") {
-    //   //a = a.toString() + '.';
-    // } else {
-    //   b = b.toString() + '.';
-    // }
-
-    // deci = -(a.toString().length);
-    // decimalFlag = true;
+    if (operatorSet == "none") {
+      deci = -(a.toString().length);
+    } else {
+      deci = -(b.toString().length);
+    }
   }
 
 
