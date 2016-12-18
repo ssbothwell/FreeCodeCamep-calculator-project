@@ -15,6 +15,7 @@ window.onload = function() {
   var devB = document.querySelector('#b');
   var devOperation = document.querySelector('#operation');
   var devHasCalculated = document.querySelector('#hasCalculated');
+  var devDecimalFlag = document.querySelector('#decimalFlag');
 
   devA.innerHTML = 'foo';
   devB.innerHTML = 'bar';
@@ -26,6 +27,7 @@ window.onload = function() {
     devB.innerHTML = calc.print()[1];
     devOperation.innerHTML = calc.print()[2];
     devHasCalculated.innerHTML = calc.print()[3];
+    devDecimalFlag.innerHTML = calc.print()[4];
   }
 
   function updateScreen() {

@@ -59,14 +59,14 @@ function createCalculator() {
 
   function print() {
     console.log([a, b, operatorSet, hasCalculated]);
-    return [a, b, operatorSet, hasCalculated];
+    return [a, b, operatorSet, hasCalculated, decimalFlag];
   }
 
   function decimal() {
     if (operatorSet == "none" & decimalFlag === false) {
       a = a.toString() + '.';
       decimalFlag = true;
-    } else if (operatorSet != "none" & decimalFlag === true) {
+    } else if (operatorSet != "none" & decimalFlag === false) {
       b = b.toString() + '.';
       decimalFlag = true;
     }
@@ -78,10 +78,10 @@ function createCalculator() {
     set: set,
     decimal: decimal,
     calculate: calculate,
-    selectAdd: function() {operator = operators.add; operatorSet = "Add";},
-    selectSubtract: function() {operator = operators.subtract; operatorSet = "Subtract";},
-    selectMultiply: function() {operator = operators.multiply; operatorSet = "Multiply";},
-    selectDivide: function() {operator = operators.divide; operatorSet = "divide";},
+    selectAdd: function() {operator = operators.add; operatorSet = "Add"; decimalFlag = false;},
+    selectSubtract: function() {operator = operators.subtract; operatorSet = "Subtract"; decimalFlag = false;},
+    selectMultiply: function() {operator = operators.multiply; operatorSet = "Multiply"; decimalFlag = false;},
+    selectDivide: function() {operator = operators.divide; operatorSet = "divide"; decimalFlag = false;},
   }
 };
 
