@@ -4,7 +4,6 @@ function createCalculator() {
   var operatorSet = "none";
   var hasCalculated = false;
   var decimalFlag = false;
-  var deci = 0;
   var operator;
   var operators = {
     add: function(){a += b;},
@@ -22,18 +21,16 @@ function createCalculator() {
   }
 
   function set(value) {
-    if (decimalFlag == true) {
-      value = '0.' + value.toString();
-      decimalFlag = false;
-    }
     if (hasCalculated == true) {
       if (operatorSet == "none") {
         clear();
         a = parseFloat(value);
+
         return a;
       } else {
         b = parseFloat(value);
         hasCalculated = false;
+        
         return b;
       }
 
@@ -42,10 +39,7 @@ function createCalculator() {
       a = a.toString();
       a = a.concat(value);
       a = parseFloat(a);
-      if (decimalFlag == true) {
-        a = a * Math.pow(10, deci);
-        decimalFlag = false;
-      }
+
       return a;
     } else if (operatorSet != "none") {
       value = value.toString();
@@ -69,17 +63,14 @@ function createCalculator() {
   }
 
   function decimal() {
-    decimalFlag = true;
-    // if (hasCalculated == false && operatorSet == "none") {
-    //   //a = a.toString() + '.';
-    // } else {
-    //   b = b.toString() + '.';
-    // }
-
-    // deci = -(a.toString().length);
-    // decimalFlag = true;
+    if (operatorSet == "none" & decimalFlag === false) {
+      a = a.toString() + '.';
+      decimalFlag = true;
+    } else if (operatorSet != "none" & decimalFlag === true) {
+      b = b.toString() + '.';
+      decimalFlag = true;
+    }
   }
-
 
   return {
     clear: clear,
@@ -96,9 +87,9 @@ function createCalculator() {
 
 
 
-// Example:
-calc = createCalculator();
-calc.set(314);
-calc.decimal();
-calc.set(1);
-calc.print();
+//// Example:
+//calc = createCalculator();
+//calc.set(314);
+//calc.decimal();
+//calc.set(1);
+//calc.print();

@@ -28,6 +28,13 @@ window.onload = function() {
     devHasCalculated.innerHTML = calc.print()[3];
   }
 
+  function updateScreen() {
+    if (calc.print()[2] == 'none') {
+      screen.innerHTML = calc.print()[0]; 
+    } else if (calc.print()[2] != 'none') {
+      screen.innerHTML = calc.print()[1];
+    }
+  }
   for (var i = 0; i < nums.length; i++) {
     nums[i].onclick = function() {
       var btnVal = this.innerHTML;
@@ -74,7 +81,6 @@ window.onload = function() {
   decimalPlace.onclick = function() {
     calc.decimal();
     devUpdate();
+    updateScreen();
   }
-
-  //calculate.onclick = calc.calculate();
 };
