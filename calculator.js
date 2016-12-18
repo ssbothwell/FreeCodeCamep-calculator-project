@@ -46,6 +46,10 @@ function createCalculator() {
       b = b.toString();
       b = b.concat(value);
       b = parseFloat(b);
+      if (decimalFlag == true) {
+        b = b * Math.pow(10, deci);
+        decimalFlag = false;
+      }
       return b;
     }
   }
@@ -59,7 +63,7 @@ function createCalculator() {
 
   function print() {
     console.log([a, b, operatorSet, hasCalculated]);
-    return [a, b, operatorSet, hasCalculated];
+    return [a, b, operatorSet, hasCalculated, decimalFlag];
   }
 
   function decimal() {
