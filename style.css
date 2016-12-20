@@ -49,9 +49,24 @@ body {
   width: 220px;
   text-align: right;
   line-height: 58px;
-  font-size: 48px;
   color: white;
   padding: 2%;
+}
+
+.sixDigits {
+  font-size: 55px;
+}
+
+.sevenDigits {
+  font-size: 48px;
+}
+
+.eightDigits {
+  font-size: 41px;
+}
+
+.nineDigits {
+  font-size: 36px;
 }
 
 .keys span {

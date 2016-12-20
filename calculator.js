@@ -21,33 +21,45 @@ function createCalculator() {
   }
 
   function set(value) {
-    if (hasCalculated == true) {
-      if (operatorSet == "none") {
-        clear();
-        a = parseFloat(value);
-
-        return a;
-      } else {
-        b = parseFloat(value);
-        hasCalculated = false;
-        
-        return b;
+    if (operatorSet == "none") {
+    // we are working on the `a` register 
+      if (hasCalculated == true) {
+      // we are starting a new calculation so clear both registers
+      // then set `a` to `value`
+      clear();
+      a = parseFloat(value);
+      return a;
       }
-
-    } else if (operatorSet == "none") {
+      if (a.toString().length == 9) {
+      // dont add the new character and return the `a` register
+        return a;
+      }
+      // Concat `value` to `a` register
       value = value.toString();
       a = a.toString();
       a = a.concat(value);
       a = parseFloat(a);
-
       return a;
     } else if (operatorSet != "none") {
-      value = value.toString();
-      b = b.toString();
-      b = b.concat(value);
-      b = parseFloat(b);
+    // we are working on the `b` register
+    if (b.toString().length == 9) {
+      // dont add the new character and return the `b` register
       return b;
     }
+    if (b == 0) {
+    // First character must be set not concat'd
+      b = parseFloat(value);
+      return b;
+    } 
+    // concat `value` to `a` register
+    value = value.toString();
+    b = b.toString();
+    b = b.concat(value);
+    b = parseFloat(b);
+    return b;
+
+    }
+
   }
 
   function calculate() {
@@ -58,11 +70,15 @@ function createCalculator() {
   }
 
   function print() {
-    console.log([a, b, operatorSet, hasCalculated]);
+    //console.log([a, b, operatorSet, hasCalculated]);
     return [a, b, operatorSet, hasCalculated, decimalFlag];
   }
 
   function decimal() {
+    if (hasCalculated == true) {
+      b = 0;
+      hasCalculated = false;
+    }
     if (operatorSet == "none" & decimalFlag === false) {
       a = a.toString() + '.';
       decimalFlag = true;
@@ -78,18 +94,10 @@ function createCalculator() {
     set: set,
     decimal: decimal,
     calculate: calculate,
-    selectAdd: function() {operator = operators.add; operatorSet = "Add"; decimalFlag = false;},
+    selectAdd: function() {operator = operators.add; operatorSet = "Add"; b = 0; decimalFlag = false;},
     selectSubtract: function() {operator = operators.subtract; operatorSet = "Subtract"; decimalFlag = false;},
     selectMultiply: function() {operator = operators.multiply; operatorSet = "Multiply"; decimalFlag = false;},
     selectDivide: function() {operator = operators.divide; operatorSet = "divide"; decimalFlag = false;},
   }
 };
 
-
-
-//// Example:
-//calc = createCalculator();
-//calc.set(314);
-//calc.decimal();
-//calc.set(1);
-//calc.print();

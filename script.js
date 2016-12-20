@@ -37,15 +37,23 @@ window.onload = function() {
       screen.innerHTML = calc.print()[1];
     }
   }
+
+  function sizeScreen() {
+    if (screen.innerHTML.length == 7) {
+      screen.className = "sevenDigits";
+    } else if (screen.innerHTML.length == 8) {
+      screen.className = "eightDigits";
+    } else if (screen.innerHTML.length == 9) {
+      screen.className = "nineDigits";
+    } 
+  }
+
   for (var i = 0; i < nums.length; i++) {
     nums[i].onclick = function() {
       var btnVal = this.innerHTML;
       screen.innerHTML = calc.set(parseFloat(btnVal));
+      sizeScreen();
       devUpdate();
-      // calc.set(screen.innerHTML);
-      // if (screen.innerHTML.length > 8) {
-      //   screen.innerHTML = parseInt(btnVal).toExponential();
-      // }
     }
   }
 
