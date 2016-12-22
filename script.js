@@ -26,14 +26,14 @@ window.onload = function() {
     devA.innerHTML = calc.print()[0];
     devB.innerHTML = calc.print()[1];
     devOperation.innerHTML = calc.print()[2];
-    devHasCalculated.innerHTML = calc.print()[3];
+    devHasCalculated.innerHTML = calc.print()[5];
     devDecimalFlag.innerHTML = calc.print()[4];
   }
 
   function updateScreen() {
-    if (calc.print()[2] == 'none') {
+    if (calc.print()[3] == 'a') {
       screen.innerHTML = calc.print()[0]; 
-    } else if (calc.print()[2] != 'none') {
+    } else if (calc.print()[3] == 'b') {
       screen.innerHTML = calc.print()[1];
     }
   }
@@ -51,7 +51,8 @@ window.onload = function() {
   for (var i = 0; i < nums.length; i++) {
     nums[i].onclick = function() {
       var btnVal = this.innerHTML;
-      screen.innerHTML = calc.set(parseFloat(btnVal));
+      calc.set(parseFloat(btnVal));
+      updateScreen();
       sizeScreen();
       devUpdate();
     }

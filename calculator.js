@@ -1,91 +1,73 @@
 function createCalculator() {
-  var a = 0;
-  var b = 0;
-  var operatorSet = "none";
+  // Memory registers:
+  var a = {'value': 0, register: 'a'};
+  var b = {'value': 0, register: 'b'};
+  // Active Register pointer:
+  var active = a;
+
   var hasCalculated = false;
+  
+  var operatorSet = "none";
+
   var decimalFlag = false;
+  // Current operator:
   var operator;
+  // Operator choice array:
   var operators = {
-    add: function(){a += b;},
-    subtract: function(){a -= b;},
-    multiply: function(){a = a*b;},
-    divide: function(){a = a/b;},
+    add: function(){a.value += b.value;},
+    subtract: function(){a.value -= b.value;},
+    multiply: function(){a.value = a.value*b.value;},
+    divide: function(){a.value = a.value/b.value;},
   }
 
   function clear() {
-    a = 0;
-    b = 0;
-    operatorSet = "none";
+    a.value = 0;
+    b.value = 0;
+    active = a;
     hasCalculated = false;
+    operatorSet = "none";
     decimalFlag = false;
   }
 
   function set(value) {
-    if (operatorSet == "none") {
-    // we are working on the `a` register 
-      if (hasCalculated == true) {
-      // we are starting a new calculation so clear both registers
-      // then set `a` to `value`
-      clear();
-      a = parseFloat(value);
-      return a;
-      }
-      if (a.toString().length == 9) {
-      // dont add the new character and return the `a` register
-        return a;
-      }
-      // Concat `value` to `a` register
-      value = value.toString();
-      a = a.toString();
-      a = a.concat(value);
-      a = parseFloat(a);
-      return a;
-    } else if (operatorSet != "none") {
-    // we are working on the `b` register
-    if (b.toString().length == 9) {
-      // dont add the new character and return the `b` register
-      return b;
+    if (hasCalculated == true & operatorSet != 'none') {
+      hasCalculated = false;
+      active = b;
+      b.value = 0;
     }
-    if (b == 0) {
-    // First character must be set not concat'd
-      b = parseFloat(value);
-      return b;
-    } 
-    // concat `value` to `a` register
-    value = value.toString();
-    b = b.toString();
-    b = b.concat(value);
-    b = parseFloat(b);
-    return b;
 
+    if (hasCalculated == true & operatorSet == 'none') {
+      clear();
     }
+
+    value = value.toString();
+    active.value = active.value.toString();
+    active.value = active.value.concat(value);
+    active.value = parseFloat(active.value);
 
   }
 
   function calculate() {
     operator();
+    active = a;
     hasCalculated = true;
-    operatorSet = "none";
-    return a;
+    operatorSet = 'none';
+    return a.value;
   }
 
   function print() {
-    //console.log([a, b, operatorSet, hasCalculated]);
-    return [a, b, operatorSet, hasCalculated, decimalFlag];
+    return [a.value, b.value, operatorSet, active.register, decimalFlag, hasCalculated];
   }
 
   function decimal() {
-    if (hasCalculated == true) {
-      b = 0;
-      hasCalculated = false;
-    }
-    if (operatorSet == "none" & decimalFlag === false) {
-      a = a.toString() + '.';
+    //if (hasCalculated == true) {
+    //  b.value = 0;
+    //  hasCalculated = false;
+    //}
+    if (decimalFlag === false) {
+      active.value = active.value.toString() + '.';
       decimalFlag = true;
-    } else if (operatorSet != "none" & decimalFlag === false) {
-      b = b.toString() + '.';
-      decimalFlag = true;
-    }
+    } 
   }
 
   return {
@@ -94,10 +76,10 @@ function createCalculator() {
     set: set,
     decimal: decimal,
     calculate: calculate,
-    selectAdd: function() {operator = operators.add; operatorSet = "Add"; b = 0; decimalFlag = false;},
-    selectSubtract: function() {operator = operators.subtract; operatorSet = "Subtract"; decimalFlag = false;},
-    selectMultiply: function() {operator = operators.multiply; operatorSet = "Multiply"; decimalFlag = false;},
-    selectDivide: function() {operator = operators.divide; operatorSet = "divide"; decimalFlag = false;},
+    selectAdd: function() {operator = operators.add; operatorSet = "Add"; active = b; decimalFlag = false;},
+    selectSubtract: function() {operator = operators.subtract; operatorSet = "Subtract"; active = b; decimalFlag = false;},
+    selectMultiply: function() {operator = operators.multiply; operatorSet = "Multiply"; active = b; decimalFlag = false;},
+    selectDivide: function() {operator = operators.divide; operatorSet = "divide"; active = b; decimalFlag = false;},
   }
 };
 
