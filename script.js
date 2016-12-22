@@ -47,7 +47,9 @@ window.onload = function() {
       screen.className = "eightDigits";
     } else if (screen.innerHTML.length == 9) {
       screen.className = "nineDigits";
-    } 
+    } else if (screen.innerHTML.length < 7) {
+      screen.className = "sixDigits";
+    }
   }
 
   for (var i = 0; i < nums.length; i++) {
@@ -90,7 +92,7 @@ window.onload = function() {
     calc.clear();
     screen.innerHTML = '0';
     devUpdate();
-    updateScreen();
+    sizeScreen();
   }
 
   decimalPlace.onclick = function() {
