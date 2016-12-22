@@ -60,10 +60,6 @@ function createCalculator() {
   }
 
   function decimal() {
-    //if (hasCalculated == true) {
-    //  b.value = 0;
-    //  hasCalculated = false;
-    //}
     if (decimalFlag === false) {
       active.value = active.value.toString() + '.';
       decimalFlag = true;
