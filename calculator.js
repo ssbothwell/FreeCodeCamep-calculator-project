@@ -6,10 +6,9 @@ function createCalculator() {
   var active = a;
 
   var hasCalculated = false;
-  
   var operatorSet = "none";
-
   var decimalFlag = false;
+
   // Current operator:
   var operator;
   // Operator choice array:
@@ -44,11 +43,12 @@ function createCalculator() {
     active.value = active.value.toString();
     active.value = active.value.concat(value);
     active.value = parseFloat(active.value);
-
+    active.value = parseFloat(active.value.toString().slice(0,9));
   }
 
   function calculate() {
     operator();
+    a.value = parseFloat(a.value.toFixed(8));
     active = a;
     hasCalculated = true;
     operatorSet = 'none';
@@ -66,11 +66,25 @@ function createCalculator() {
     } 
   }
 
+  function signChange() {
+    if (active.value > 0) {
+      active.value = -Math.abs(active.value);
+    } else if (active.value < 0) {
+      active.value = Math.abs(active.value);
+    }
+  }
+
+  function percentage() {
+    active.value = active.value * 0.01;
+  }
+
   return {
     clear: clear,
     print: print,
     set: set,
     decimal: decimal,
+    signChange: signChange,
+    percentage: percentage,
     calculate: calculate,
     selectAdd: function() {operator = operators.add; operatorSet = "Add"; active = b; decimalFlag = false;},
     selectSubtract: function() {operator = operators.subtract; operatorSet = "Subtract"; active = b; decimalFlag = false;},

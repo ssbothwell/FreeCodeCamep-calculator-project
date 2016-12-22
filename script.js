@@ -8,6 +8,8 @@ window.onload = function() {
   var calculate = document.querySelector('.calculate');
   var clear = document.querySelector('.clear');
   var decimalPlace = document.querySelector('#decimal');
+  var signChange = document.querySelector('#signChange');
+  var percentage = document.querySelector('#percentage');
   var screen = document.querySelector('#screen');
 
   // Dev window
@@ -81,6 +83,7 @@ window.onload = function() {
   calculate.onclick = function() {
     screen.innerHTML = calc.calculate();
     devUpdate();
+    sizeScreen();
   }
 
   clear.onclick = function() {
@@ -91,6 +94,18 @@ window.onload = function() {
 
   decimalPlace.onclick = function() {
     calc.decimal();
+    devUpdate();
+    updateScreen();
+  }
+
+  signChange.onclick = function() {
+    calc.signChange();
+    devUpdate();
+    updateScreen();
+  }
+
+  percentage.onclick = function() {
+    calc.percentage();
     devUpdate();
     updateScreen();
   }
