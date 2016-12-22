@@ -90,6 +90,7 @@ window.onload = function() {
     calc.clear();
     screen.innerHTML = '0';
     devUpdate();
+    updateScreen();
   }
 
   decimalPlace.onclick = function() {
