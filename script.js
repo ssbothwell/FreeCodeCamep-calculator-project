@@ -45,7 +45,7 @@ window.onload = function() {
       screen.className = "sevenDigits";
     } else if (screen.innerHTML.length == 8) {
       screen.className = "eightDigits";
-    } else if (screen.innerHTML.length == 9) {
+    } else if (screen.innerHTML.length >= 9) {
       screen.className = "nineDigits";
     } else if (screen.innerHTML.length < 7) {
       screen.className = "sixDigits";

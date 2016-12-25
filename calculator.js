@@ -1,12 +1,12 @@
 function createCalculator() {
   // Memory registers:
-  var a = {'value': 0, register: 'a'};
-  var b = {'value': 0, register: 'b'};
+  var a = {'value': '', register: 'a'};
+  var b = {'value': '', register: 'b'};
   // Active Register pointer:
   var active = a;
 
   var hasCalculated = false;
-  var operatorSet = "none";
+  var operatorSet = 'none';
   var decimalFlag = false;
 
   // Current operator:
@@ -20,11 +20,11 @@ function createCalculator() {
   }
 
   function clear() {
-    a.value = 0;
-    b.value = 0;
+    a.value = '';
+    b.value = '';
     active = a;
     hasCalculated = false;
-    operatorSet = "none";
+    operatorSet = 'none';
     decimalFlag = false;
   }
 
@@ -38,17 +38,26 @@ function createCalculator() {
     if (hasCalculated == true & operatorSet == 'none') {
       clear();
     }
-
     value = value.toString();
     active.value = active.value.toString();
     active.value = active.value.concat(value);
-    active.value = parseFloat(active.value);
-    active.value = parseFloat(active.value.toString().slice(0,9));
+    if (a.value % 1 === 0) {
+      active.value = active.value.toString().slice(0,9);
+    } else {
+      active.value = active.value.toString().slice(0,10);
+    }
   }
 
   function calculate() {
+    floatRegister(a);
+    floatRegister(b);
     operator();
-    a.value = parseFloat(a.value.toFixed(8));
+
+    if (a.value % 1 === 0) {
+      a.value = parseFloat(a.value.toString().slice(0,9));
+    } else {
+      a.value = parseFloat(a.value.toString().slice(0,10));
+    }
     active = a;
     hasCalculated = true;
     operatorSet = 'none';
@@ -77,6 +86,11 @@ function createCalculator() {
   function percentage() {
     active.value = active.value * 0.01;
   }
+  
+  function floatRegister(register) {
+    register.value = parseFloat(register.value);
+    return register;
+  }
 
   return {
     clear: clear,
@@ -86,10 +100,30 @@ function createCalculator() {
     signChange: signChange,
     percentage: percentage,
     calculate: calculate,
-    selectAdd: function() {operator = operators.add; operatorSet = "Add"; active = b; decimalFlag = false;},
-    selectSubtract: function() {operator = operators.subtract; operatorSet = "Subtract"; active = b; decimalFlag = false;},
-    selectMultiply: function() {operator = operators.multiply; operatorSet = "Multiply"; active = b; decimalFlag = false;},
-    selectDivide: function() {operator = operators.divide; operatorSet = "divide"; active = b; decimalFlag = false;},
+    selectAdd: function() {
+                            operator = operators.add; 
+                            operatorSet = 'Add'; 
+                            active = b; 
+                            decimalFlag = false;
+                          },
+    selectSubtract: function() {
+                            operator = operators.subtract; 
+                            operatorSet = 'Subtract'; 
+                            active = b; 
+                            decimalFlag = false;
+                          },
+    selectMultiply: function() {
+                            operator = operators.multiply; 
+                            operatorSet = 'Multiply'; 
+                            active = b; 
+                            decimalFlag = false;
+                          },
+    selectDivide: function() {
+                            operator = operators.divide; 
+                            operatorSet = 'divide'; 
+                            active = b; 
+                            decimalFlag = false;
+                          },
   }
 };
 
