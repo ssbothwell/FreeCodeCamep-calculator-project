@@ -33,6 +33,13 @@ window.onload = function() {
   devHasCalculated.innerHTML = 'bam';
   devScreenHeight.innerHTML = screenHeight;
 
+  if (screenHeight <= 768) {
+    console.log('small!');
+    devScreenHeight.innerHTML = screenHeight + ' small!';
+  } else {
+    devScreenHeight.innerHTML = screenHeight + ' big!';
+  }
+
   function devUpdate() {
     devA.innerHTML = calc.print()[0];
     devB.innerHTML = calc.print()[1];
