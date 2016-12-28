@@ -1,4 +1,5 @@
 window.onload = function() {
+  var screenHeight = window.screen.availHeight;
   var calc = createCalculator();
   var nums = document.querySelectorAll('.num');
   var multiply = document.querySelector('.multiply');
@@ -11,6 +12,12 @@ window.onload = function() {
   var signChange = document.querySelector('#signChange');
   var percentage = document.querySelector('#percentage');
   var screen = document.querySelector('#screen');
+  
+  // Adjust Layout for screen size
+  if (screenHeight <= 768) {
+    var container = document.querySelector('#container');
+    container.className = 'small';
+  }
 
   // Dev window
   var devA = document.querySelector('#a');

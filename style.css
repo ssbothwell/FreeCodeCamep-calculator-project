@@ -9,10 +9,19 @@ body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   color: #333333;
 }
+
 #container {
-  width: 13%;
   margin: 0 auto;
 }
+
+.small {
+  width: 90%;
+}
+
+.big {
+  width: 13%;
+}
+
 #status {
   margin: 25px auto;
   padding: 5px;
