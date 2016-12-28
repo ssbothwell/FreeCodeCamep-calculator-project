@@ -5,10 +5,7 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-
-
-	/* Better text styling */
-	font-size: 20px;
+	font-size: 62.5%;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   color: #333333;
 }
@@ -31,13 +28,20 @@ body {
   background: #a9a9a9;
   border-radius: 5px;
 }
-.keys, .top {overflow: hidden;}
+.keys, .top {
+  overflow: hidden;
+  }
 
 .top {
   width: 220px;
   height: 80px;
   background: #8a9296;
   border-radius: 5px 5px 0 0;
+  font-size: 8em;
+}
+
+.keys {
+ font-size: 8em;
 }
 
 .titlebar {
@@ -55,19 +59,19 @@ body {
 }
 
 .sixDigits {
-  font-size: 55px;
+  font-size: 1.45em;
 }
 
 .sevenDigits {
-  font-size: 48px;
+  font-size: 1.4em;
 }
 
 .eightDigits {
-  font-size: 41px;
+  font-size: 1.2em;
 }
 
 .nineDigits {
-  font-size: 41px;
+  font-size: 1.1em;
 }
 
 .keys span {
