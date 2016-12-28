@@ -32,7 +32,7 @@ function createCalculator() {
     if (hasCalculated == true & operatorSet != 'none') {
       hasCalculated = false;
       active = b;
-      b.value = 0;
+      b.value = '';
     }
 
     if (hasCalculated == true & operatorSet == 'none') {
@@ -101,24 +101,28 @@ function createCalculator() {
     percentage: percentage,
     calculate: calculate,
     selectAdd: function() {
+                            if (operatorSet != 'none') { calculate(); };
                             operator = operators.add; 
                             operatorSet = 'Add'; 
                             active = b; 
                             decimalFlag = false;
                           },
     selectSubtract: function() {
+                            if (operatorSet != 'none') { calculate(); };
                             operator = operators.subtract; 
                             operatorSet = 'Subtract'; 
                             active = b; 
                             decimalFlag = false;
                           },
     selectMultiply: function() {
+                            if (operatorSet != 'none') { calculate(); };
                             operator = operators.multiply; 
                             operatorSet = 'Multiply'; 
                             active = b; 
                             decimalFlag = false;
                           },
     selectDivide: function() {
+                            if (operatorSet != 'none') { calculate(); };
                             operator = operators.divide; 
                             operatorSet = 'divide'; 
                             active = b; 
