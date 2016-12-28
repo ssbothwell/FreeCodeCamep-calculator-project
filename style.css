@@ -145,7 +145,7 @@ span.bottomRight {
   background: #34c84a;
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 768px) {
   #container {
     width: 100%;
   }
