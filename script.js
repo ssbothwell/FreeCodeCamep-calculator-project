@@ -51,7 +51,20 @@ window.onload = function() {
       screen.className = "sixDigits";
     }
   }
+  
+  function clearHighlightKey() { 
+    multiply.classList.remove('selectedOp');
+    divide.classList.remove('selectedOp'); 
+    add.classList.remove('selectedOp');
+    subtract.classList.remove('selectedOp');
+  }
 
+  function highlightKey(key) {
+    clearHighlightKey();
+    if (!key.classList.contains('selectedOp')) {
+      key.className += ' selectedOp';
+    }
+  }
   for (var i = 0; i < nums.length; i++) {
     nums[i].onclick = function() {
       var btnVal = this.innerHTML;
@@ -65,27 +78,32 @@ window.onload = function() {
   multiply.onclick = function() {
     calc.selectMultiply();
     devUpdate();
+    highlightKey(multiply);
   }
 
   divide.onclick = function() {
     calc.selectDivide();
     devUpdate();
+    highlightKey(divide);
   }
 
   add.onclick = function() {
     calc.selectAdd();
     devUpdate();
+    highlightKey(add); 
   }
 
   subtract.onclick = function() {
     calc.selectSubtract ();
     devUpdate();
+    highlightKey(subtract);
   }
 
   calculate.onclick = function() {
     screen.innerHTML = calc.calculate();
     devUpdate();
     sizeScreen();
+    clearHighlightKey();
   }
 
   clear.onclick = function() {
@@ -93,6 +111,7 @@ window.onload = function() {
     screen.innerHTML = '0';
     devUpdate();
     sizeScreen();
+    clearHighlightKey();
   }
 
   decimalPlace.onclick = function() {
