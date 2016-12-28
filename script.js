@@ -25,11 +25,13 @@ window.onload = function() {
   var devOperation = document.querySelector('#operation');
   var devHasCalculated = document.querySelector('#hasCalculated');
   var devDecimalFlag = document.querySelector('#decimalFlag');
+  var devScreenHeight = document.querySelector('#screenHeight');
 
   devA.innerHTML = 'foo';
   devB.innerHTML = 'bar';
   devOperation.innerHTML = 'baz';
   devHasCalculated.innerHTML = 'bam';
+  devScreenHeight.innerHTML = screenHeight;
 
   function devUpdate() {
     devA.innerHTML = calc.print()[0];
