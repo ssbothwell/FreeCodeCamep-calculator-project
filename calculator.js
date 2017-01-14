@@ -70,7 +70,7 @@ function createCalculator() {
 
   function decimal() {
     if (decimalFlag === false) {
-      active.value = active.value.toString() + '.';
+      set('.');
       decimalFlag = true;
     } 
   }
