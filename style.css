@@ -23,7 +23,7 @@ body {
   border-style: solid;
   border-width: 1px;
   font-size: 6em;
-  /* display: none; */
+  display: none; 
 }
 
 #calculator {
