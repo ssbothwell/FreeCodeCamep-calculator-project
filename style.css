@@ -11,7 +11,7 @@ body {
 
 #container {
   margin: 0 auto;
-  width: 220px;
+  width: 100%;
 }
 
 #status {
@@ -27,7 +27,7 @@ body {
 
 #calculator {
   margin: 50px auto;
-  width: 100%;
+  width: 220px;
   box-shadow: 0 0 0 1px #8a9296;
   background: #a9a9a9;
   border-radius: 5px;
@@ -72,15 +72,12 @@ body {
   font-size: 35px;
 }
 
-.keys span {
+.keys div {
 	float: left;
-	position: relative;
-	top: 0;
 	cursor: pointer;
-	width: 25%;
+	width: 55px;
 	height: 55px; 
 	background: #e0e0e0;
-	margin: 0;
 	outline: 1px solid #999;
 	line-height: 55px;
 	text-align: center;
@@ -92,7 +89,7 @@ body {
 	transition: all 0.2s ease;
 }
 
-.keys span:active {
+.keys div:active {
   opacity: 0.25;
 }
 
@@ -100,19 +97,19 @@ body {
  opacity: 0.25; 
 }
 #zero {
-  width: 50%;
+  width: 110px;
 }
 
-span.operator {
+div.operator {
   background: #f5923e;
   color: #ffffff;
 }
 
-span.bottomLeft {
+div.bottomLeft {
   border-bottom-left-radius: 5px;
 }
 
-span.bottomRight {
+div.bottomRight {
   border-bottom-right-radius: 5px;
 }
 
@@ -138,14 +135,23 @@ span.bottomRight {
   background: #34c84a;
 }
 
+#footer {
+  text-align: center;
+}
+
 @media only screen and (max-device-width: 667px) {
-  #container {
+  #calculator {
     width: 100%;
+    margin-top: 0;
   }
-  .keys span {
+  .keys div {
+    width: 25%;
     height: 200px;
     line-height: 200px;
     font-size: 80px; 
+  }
+  #zero {
+    width: 50%;
   }
   .top {
     height: 300px;
@@ -155,11 +161,17 @@ span.bottomRight {
     height: 48px;
     width: 48px;
   }
+  .titlebar {
+    height: 60px;
+  }
   #screen {
+    height: 300px;
     line-height: 300px;
+    margin: 0;
+    padding: 0 10px 0 10px;
   }
   .sixDigits {
-    font-size: 190px;
+    font-size: 180px;
   }
   .sevenDigits {
     font-size: 170px;
@@ -170,4 +182,8 @@ span.bottomRight {
   .nineDigits {
     font-size: 140px;
   }
+  #footer {
+    font-size: 40px;
+  }
 }
+
