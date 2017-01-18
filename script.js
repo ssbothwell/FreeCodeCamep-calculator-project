@@ -33,6 +33,7 @@ window.onload = function() {
   devHasCalculated.innerHTML = 'bam';
   devScreenHeight.innerHTML = screenHeight;
 
+
   if (screenHeight <= 768) {
     console.log('small!');
     devScreenHeight.innerHTML = screenHeight + ' small!';
@@ -54,6 +55,8 @@ window.onload = function() {
     } else if (calc.print()[3] == 'b') {
       screen.innerHTML = calc.print()[1];
     }
+    sizeScreen();
+    console.log(calc.print()[3]);
   }
 
   function sizeScreen() {
@@ -85,32 +88,44 @@ window.onload = function() {
     nums[i].onclick = function() {
       var btnVal = this.innerHTML;
       calc.set(parseFloat(btnVal));
+      clearHighlightKey();
       updateScreen();
-      sizeScreen();
       devUpdate();
     }
   }
 
   multiply.onclick = function() {
     calc.selectMultiply();
+    if (calc.print()[2] !== 'none') {
+      screen.innerHTML = calc.print()[0];  
+    }
     devUpdate();
     highlightKey(multiply);
   }
 
   divide.onclick = function() {
     calc.selectDivide();
+    if (calc.print()[2] !== 'none') {        
+      screen.innerHTML = calc.print()[0];  
+    }
     devUpdate();
     highlightKey(divide);
   }
 
   add.onclick = function() {
     calc.selectAdd();
+    if (calc.print()[2] !== 'none') {
+      screen.innerHTML = calc.print()[0];  
+    }
     devUpdate();
     highlightKey(add); 
   }
 
   subtract.onclick = function() {
     calc.selectSubtract ();
+    if (calc.print()[2] !== 'none') {
+      screen.innerHTML = calc.print()[0];  
+    }
     devUpdate();
     highlightKey(subtract);
   }
@@ -118,7 +133,6 @@ window.onload = function() {
   calculate.onclick = function() {
     screen.innerHTML = calc.calculate();
     devUpdate();
-    sizeScreen();
     clearHighlightKey();
   }
 
@@ -126,7 +140,6 @@ window.onload = function() {
     calc.clear();
     screen.innerHTML = '0';
     devUpdate();
-    sizeScreen();
     clearHighlightKey();
   }
 
