@@ -12,7 +12,7 @@ body {
 
 #container {
   margin: 0 auto;
-  width: 12%;
+  width: 220px;
 }
 
 #status {
@@ -22,7 +22,7 @@ body {
   height auto;
   border-style: solid;
   border-width: 1px;
-  font-size: 6em;
+  font-size: 22px;
   display: none; 
 }
 
@@ -39,23 +39,21 @@ body {
 
 .top {
   width: 100%;
-  height: 4em;
+  height: 80px;
   background: #8a9296;
   border-radius: 5px 5px 0 0;
-  font-size: 8em;
 }
 
 .keys {
- font-size: 8em;
+ font-size: 22px;
 }
 
 .titlebar {
   width: 100%;
-  height: 1.5em;
+  height: 12px;
 }
 
 #screen {
-  height: 2.5em;
   width: 100%;
   text-align: right;
   line-height: 58px;
@@ -64,19 +62,19 @@ body {
 }
 
 .sixDigits {
-  font-size: 2.5em;
+  font-size: 50px;
 }
 
 .sevenDigits {
-  font-size: 2.25em;
+  font-size: 45px;
 }
 
 .eightDigits {
-  font-size: 2em;
+  font-size: 40px;
 }
 
 .nineDigits {
-  font-size: 1.75em;
+  font-size: 35px;
 }
 
 .keys span {
@@ -85,11 +83,11 @@ body {
 	top: 0;
 	cursor: pointer;
 	width: 25%;
-	height: 4em;
+	height: 55px; 
 	background: #e0e0e0;
 	margin: 0;
 	outline: 1px solid #999;
-	line-height: 4em;
+	line-height: 55px;
 	text-align: center;
 
 	/* prevent selection of text inside keys */
@@ -124,9 +122,9 @@ span.bottomRight {
 }
 
 .circle {
-  margin: .5em;
-	width: 1.5em;
-	height: 1.5em;
+  margin: 5px;
+	width: 12px;
+	height: 12px;
 	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
@@ -145,8 +143,8 @@ span.bottomRight {
   background: #34c84a;
 }
 
-@media all and (max-width: 768px) {
+@media only screen and (max-device-width: 667px) {
   #container {
-    width: 100%;
+    width: 375px;
   }
 }
